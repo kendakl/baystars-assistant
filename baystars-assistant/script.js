@@ -5,7 +5,7 @@
 
 class GameDataManager {
     constructor() {
-        this.apiUrl = 'http://localhost:8080/api/game';
+        this.apiUrl = '/api/game';
         this.data = null;
         this.pollInterval = 5000;
         this.currentGameUrl = null;
@@ -14,7 +14,7 @@ class GameDataManager {
     async autoRedirectBaystars() {
         try {
             addMessage("ai", "今日のベイスターズ戦を探しています... 待っててね！");
-            const response = await fetch('http://localhost:8080/api/baystars-match');
+            const response = await fetch('/api/baystars-match');
             const data = await response.json();
 
             if (data.url) {
