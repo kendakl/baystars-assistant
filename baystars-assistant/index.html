@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベイスターズ対話型観戦アシスタント</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Condensed:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>BAYSTARS ASSISTANT</h1>
+            <div class="live-indicator">LIVE <span class="blink">●</span></div>
+        </header>
+
+        <!-- Top Area: Real-time Game View -->
+        <main id="game-view">
+            <!-- Iframe Container -->
+            <div class="iframe-container">
+                <iframe src="/proxy/npb" title="SportsNavi Real-time" id="game-iframe"></iframe>
+                <div class="iframe-overlay">
+                    <p>※ 表示されない場合はこちら</p>
+                    <a href="https://baseball.yahoo.co.jp/npb/" target="_blank" class="glass-button">別ウィンドウで開く</a>
+                </div>
+            </div>
+
+            <!-- Mental Data Visualization (Powered by backend data now) -->
+            <div class="situation-panel glass-panel compact-panel">
+                <div class="matchup-info">
+                    <div class="player pitcher">
+                        <span class="role">投手</span>
+                        <span class="name" id="pitcher-name">--</span>
+                        <div class="mental-bar-container">
+                            <span class="label">集中力</span>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 50%; background-color: #ff4d4d;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="player batter">
+                        <span class="role">打者</span>
+                        <span class="name" id="batter-name">--</span>
+                        <div class="mental-bar-container">
+                            <span class="label">プレッシャー</span>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 50%; background-color: #ECB819;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-comment-ticker">
+                    <span id="ai-ticker-text">データ取得中...</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Area: Interactive Chat -->
+        <section id="chat-view" class="glass-panel">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai">
+                    <div class="avatar">
+                        <img src="https://placehold.co/40x40/004583/ffffff?text=B" alt="AI">
+                    </div>
+                    <div class="bubble">
+                        スポナビのデータと連動中だよ！試合の状況、何でも聞いてね！
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <button class="quick-action" onclick="sendQuickMessage('状況確認')">状況確認</button>
+                <button class="quick-action" onclick="sendQuickMessage('勝つためには')">勝つためには</button>
+                <button class="quick-action" onclick="sendQuickMessage('相手選手との相性は？')">相性</button>
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="質問を入力...">
+                    <button id="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
