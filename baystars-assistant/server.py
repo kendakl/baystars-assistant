@@ -49,16 +49,14 @@ def game_data():
     
     mock_data = {
         "isLive": False,
-        "inning": "9回裏",
-        "score": { "home": 3, "visitor": 2 },
-        "runners": { "first": True, "second": True, "third": True }, 
-        "count": { "b": 3, "s": 2, "o": 2 }, 
-        "batter": { "name": "牧", "stat": ".295 25本" },
-        "pitcher": { "name": "大勢", "stat": "1.54 30S" },
-        "text": "【デモモード】試合がないためテストデータを表示中。一打サヨナラのチャンス！"
+        "inning": "-",
+        "score": { "home": 0, "visitor": 0 },
+        "runners": { "first": False, "second": False, "third": False }, 
+        "count": { "b": 0, "s": 0, "o": 0 }, 
+        "batter": { "name": "-", "stat": "" },
+        "pitcher": { "name": "-", "stat": "" },
+        "text": "現在は試合が行われていません。次の試合を楽しみに待ちましょう！"
     }
-    if random.random() < 0.3:
-        mock_data["text"] = "【デモモード】スタンドから大歓声！（テストデータ更新中）"
         
     return jsonify(mock_data)
 
